@@ -8,26 +8,26 @@ define(function(require, exports, module) {
             // 显示当前登录名
             $('.ja_userName').text(common.getCookie('username'));
         },
-        changeMenu: function(href) {
+        changeMenu: function(href, isReload) {
+            $(".accordion .link").off().on('click', function() {
+                $this = $(this), $next = $this.next();
+                $next.slideToggle();
+                $this.parent().toggleClass('open');
+                $('.accordion').find('.submenu').not($next).slideUp().parent().removeClass('open');
+            });
             // 选中当前菜单项
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
-                // var li = $(currTarget).parent();
-                // var menuLi = $(li).parents('li');
-                // $('ul.submenu > li').removeClass('active');
-                // $(li).addClass('active');
-                // if (!menuLi.hasClass('active')) {
-                //     menuLi.siblings().removeClass('active');
-                //     menuLi.addClass('active');
-                // }
-                // $(menuLi).children('.submenu').removeClass('hidden');
-                // var oldIcon = $(menuLi).find('a > i').attr('icon');
-                // $(menuLi).find('a > i').addClass(oldIcon + '-active');
+                var $a = $(currTarget);
+                if (isReload) {
+                    $a.addClass('active');
+                    $a.closest('.submenu').prev().click();
+                } else {
+                    $('.accordion .submenu > li > a').removeClass('active');
+                    $a.addClass('active');
+                }
             }
-            $(".menu h3.menu-head").off().on('click', function() {
-                $(this).addClass("current").next("div.menu-body").slideToggle(300).siblings("div.menu-body").slideUp("fast");
-                $(this).siblings().removeClass("current");
-            });
+
         },
         _init: function() {
             var me = this;
@@ -41,7 +41,7 @@ define(function(require, exports, module) {
                             window.location.hash = '#login/login';
                             return false;
                         }
-                        if ($('#menu > ul.nav-list').length < 1) {
+                        if ($('#menu > ul.accordion').length < 1) {
                             require.async('./../tpl/index/index', function(tpl) {
                                 $('#contentBody').empty().html(template.compile(tpl)());
                                 // 获取用户配置权限，初始化菜单
@@ -50,7 +50,7 @@ define(function(require, exports, module) {
                                         require.async('./../tpl/menu/index', function(tpl) {
                                             $('#menu').empty().html(template.compile(tpl)({ data: data }));
                                             if (href != 'authorize') {
-                                                me.changeMenu(href);
+                                                me.changeMenu(href, true);
                                             }
                                             me.setUserName();
                                         });
@@ -62,7 +62,7 @@ define(function(require, exports, module) {
                             });
                         } else {
                             me.setUserName();
-                            me.changeMenu(href);
+                            me.changeMenu(href, false);
                         }
                         // 清除监控
                         if (mod !== 'carMonitor') {

@@ -21,7 +21,7 @@
             <div class="col-sm-3 col-md-2 sidebar-content">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="menu" id="menu">
+                        <div id="menu">
                         </div>
                     </div>
                 </div>

@@ -75,43 +75,92 @@ div.admin {
     padding-top: 20px;
 }
 
-.menu {
+
+/* menu */
+
+#menu {
     width: 220px;
-    .menu-head {
-        height: 47px;
-        line-height: 47px;
-        padding-left: 10px;
+    a {
+        color: #b63b4d;
+        text-decoration: none;
+    }
+    .accordion {
+        list-style-type: none;
+        width: 100%;
+        margin-bottom: 0;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        .link {
+            cursor: pointer;
+            display: block;
+            padding: 15px 15px 15px 42px;
+            color: #777;
+            font-size: 13px;
+            border-bottom: 1px solid #CCC;
+            position: relative;
+            -webkit-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        li {
+            &:last-child .link {
+                border-bottom: 0;
+            }
+            i {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                font-size: 18px;
+                color: #595959;
+                -webkit-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+            }
+            i.fa-chevron-down {
+                right: 15px;
+                top: 15px;
+                left: auto;
+                font-size: 16px;
+            }
+            &.open i {
+                color: #222;
+            }
+            &.open .link {
+                color: #222;
+            }
+            &.open i.fa-chevron-down {
+                -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .submenu {
+        display: none;
+        background: #efefef;
         font-size: 14px;
-        color: #525252;
-        cursor: pointer;
-        border-left: 1px solid #e1e1e1;
-        border-right: 1px solid #e1e1e1;
-        border-bottom: 1px solid #e1e1e1;
-        border-top: 1px solid #F1F1F1;
-        position: relative;
-        margin: 0px;
-        font-weight: bold;
-        background: #f1f1f1 url('./../img/pro_left.png') center right no-repeat;
-    }
-    .current {
-        background: #f1f1f1 url('./../img/pro_down.png') center right no-repeat;
-    }
-    .menu-body {
-        line-height: 38px;
-        border-left: 1px solid #e1e1e1;
-        background: #fff;
-        border-right: 1px solid #e1e1e1;
+        li {
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
         a {
             display: block;
-            height: 38px;
-            line-height: 38px;
-            padding-left: 38px;
-            color: #777777;
-            background: #fff;
             text-decoration: none;
-            border-bottom: 1px solid #e1e1e1;
-            &:hover {
-                text-decoration: none;
+            color: #777;
+            padding: 12px;
+            padding-left: 42px;
+            -webkit-transition: all 0.25s ease;
+            -o-transition: all 0.25s ease;
+            transition: all 0.25s ease;
+            &:hover:not(.active) {
+                background: #464444;
+                color: #FFF;
+            }
+            &.active {
+                color: #222;
+                font-weight: 700;
             }
         }
     }
@@ -124,7 +173,7 @@ div.admin {
 }
 
 .icon-position {
-    background: url('./../img/position2.png') no-repeat;
+    background: url('./../img/position1.png') no-repeat;
     position: relative;
     top: 8px;
 }
@@ -136,7 +185,7 @@ div.admin {
 }
 
 .icon-car {
-    background: url('./../img/truckicon2.png') no-repeat;
+    background: url('./../img/truckicon1.png') no-repeat;
     position: relative;
     top: 8px;
 }
@@ -148,7 +197,7 @@ div.admin {
 }
 
 .icon-org {
-    background: url('./../img/orgicon2.png') no-repeat;
+    background: url('./../img/orgicon1.png') no-repeat;
     position: relative;
     top: 8px;
 }
@@ -160,7 +209,7 @@ div.admin {
 }
 
 .icon-sys {
-    background: url('./../img/infoicon2.png') no-repeat;
+    background: url('./../img/infoicon1.png') no-repeat;
     position: relative;
     top: 8px;
 }

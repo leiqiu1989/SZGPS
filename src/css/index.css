@@ -373,41 +373,77 @@ div.admin .main-fixed {
   width: 220px;
   padding-top: 20px; }
 
-.menu {
+/* menu */
+#menu {
   width: 220px; }
-  .menu .menu-head {
-    height: 47px;
-    line-height: 47px;
-    padding-left: 10px;
-    font-size: 14px;
-    color: #525252;
-    cursor: pointer;
-    border-left: 1px solid #e1e1e1;
-    border-right: 1px solid #e1e1e1;
-    border-bottom: 1px solid #e1e1e1;
-    border-top: 1px solid #F1F1F1;
-    position: relative;
-    margin: 0px;
-    font-weight: bold;
-    background: #f1f1f1 url("./../img/pro_left.png") center right no-repeat; }
-  .menu .current {
-    background: #f1f1f1 url("./../img/pro_down.png") center right no-repeat; }
-  .menu .menu-body {
-    line-height: 38px;
-    border-left: 1px solid #e1e1e1;
-    background: #fff;
-    border-right: 1px solid #e1e1e1; }
-    .menu .menu-body a {
+  #menu a {
+    color: #b63b4d;
+    text-decoration: none; }
+  #menu .accordion {
+    list-style-type: none;
+    width: 100%;
+    margin-bottom: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px; }
+    #menu .accordion .link {
+      cursor: pointer;
       display: block;
-      height: 38px;
-      line-height: 38px;
-      padding-left: 38px;
-      color: #777777;
-      background: #fff;
+      padding: 15px 15px 15px 42px;
+      color: #777;
+      font-size: 13px;
+      border-bottom: 1px solid #CCC;
+      position: relative;
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease; }
+    #menu .accordion li:last-child .link {
+      border-bottom: 0; }
+    #menu .accordion li i {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 18px;
+      color: #595959;
+      -webkit-transition: all 0.4s ease;
+      -o-transition: all 0.4s ease;
+      transition: all 0.4s ease; }
+    #menu .accordion li i.fa-chevron-down {
+      right: 15px;
+      top: 15px;
+      left: auto;
+      font-size: 16px; }
+    #menu .accordion li.open i {
+      color: #222; }
+    #menu .accordion li.open .link {
+      color: #222; }
+    #menu .accordion li.open i.fa-chevron-down {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg); }
+  #menu .submenu {
+    display: none;
+    background: #efefef;
+    font-size: 14px; }
+    #menu .submenu li {
+      border-bottom: 1px solid #ccc;
+      border-right: 1px solid #ccc; }
+    #menu .submenu a {
+      display: block;
       text-decoration: none;
-      border-bottom: 1px solid #e1e1e1; }
-      .menu .menu-body a:hover {
-        text-decoration: none; }
+      color: #777;
+      padding: 12px;
+      padding-left: 42px;
+      -webkit-transition: all 0.25s ease;
+      -o-transition: all 0.25s ease;
+      transition: all 0.25s ease; }
+      #menu .submenu a:hover:not(.active) {
+        background: #464444;
+        color: #FFF; }
+      #menu .submenu a.active {
+        color: #222;
+        font-weight: 700; }
 
 .menu-icon {
   display: inline-block;
@@ -415,7 +451,7 @@ div.admin .main-fixed {
   height: 24px; }
 
 .icon-position {
-  background: url("./../img/position2.png") no-repeat;
+  background: url("./../img/position1.png") no-repeat;
   position: relative;
   top: 8px; }
 
@@ -425,7 +461,7 @@ div.admin .main-fixed {
   top: 8px; }
 
 .icon-car {
-  background: url("./../img/truckicon2.png") no-repeat;
+  background: url("./../img/truckicon1.png") no-repeat;
   position: relative;
   top: 8px; }
 
@@ -435,7 +471,7 @@ div.admin .main-fixed {
   top: 8px; }
 
 .icon-org {
-  background: url("./../img/orgicon2.png") no-repeat;
+  background: url("./../img/orgicon1.png") no-repeat;
   position: relative;
   top: 8px; }
 
@@ -445,7 +481,7 @@ div.admin .main-fixed {
   top: 8px; }
 
 .icon-sys {
-  background: url("./../img/infoicon2.png") no-repeat;
+  background: url("./../img/infoicon1.png") no-repeat;
   position: relative;
   top: 8px; }
 
