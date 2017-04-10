@@ -16,132 +16,135 @@ define(function(require, exports, module) {
     var roleCodeList = null; //角色代码列表
     // 权限数组
     var rolesMenu = [{
-        name: '车辆监控',
-        code: '00016',
-        url: '#carMonitor/index',
-        groupname: '车辆监控',
-        group: 'carmonitor',
-        icon: 'fa fa-map-marker'
-    }, {
-        name: '历史位置查询',
-        code: '00011',
-        url: '#historyLocation/index',
-        groupname: '车辆监控',
-        group: 'carmonitor',
-        icon: 'fa fa-users'
-    }, {
-        name: '地标点管理',
-        code: '00030',
-        url: '#landmarkPointManager/index',
-        groupname: '车辆监控',
-        group: 'carmonitor',
-        icon: 'fa fa-users'
-    }, {
-        name: '组织用户管理',
-        code: '00007',
-        url: '#orgUserManager/index',
-        groupname: '组织管理',
-        group: 'users',
-        icon: 'fa fa-users'
-    }, {
-        name: '角色管理',
-        code: '00006',
-        url: '#roleManager/index',
-        groupname: '组织管理',
-        group: 'users',
-        icon: 'fa fa-users'
-    }, {
-        name: '订单管理',
-        code: '00018',
-        url: '#orderManager/index',
-        groupname: '订单管理',
-        group: 'order',
-        icon: 'fa fa-list'
-    }, {
-        name: '投诉管理',
-        code: '00009',
-        url: '#complaintManager/index',
-        groupname: '订单管理',
-        group: 'order',
-        icon: 'fa fa-list'
-    }, {
-        name: '坐席管理',
-        code: '00010',
-        url: '#seatsManager/index',
-        groupname: '订单管理',
-        group: 'order',
-        icon: 'fa fa-list'
-    }, {
-        name: '车辆订单配置',
-        code: '00012',
-        url: '#carOrderConfig/index',
-        groupname: '订单管理',
-        group: 'order',
-        icon: 'fa fa-list'
-    }, {
-        name: '车辆管理',
-        code: '00005',
-        url: '#carManager/index',
-        groupname: '资源管理',
-        group: 'resource',
-        icon: 'fa fa-car'
-    }, {
-        name: 'GPS设备管理',
-        code: '00020',
-        url: 'javascript:void(0)',
-        groupname: '资源管理',
-        group: 'resource',
-        icon: 'fa fa-car'
-    }, {
-        name: '通讯卡管理',
-        code: '00021',
-        url: 'javascript:void(0)',
-        groupname: '资源管理',
-        group: 'resource',
-        icon: 'fa fa-car'
-    }, {
-        name: '司机管理',
-        code: '00022',
-        url: 'javascript:void(0)',
-        groupname: '资源管理',
-        group: 'resource',
-        icon: 'fa fa-car'
-    }, {
-        name: '指令发送',
-        code: '00029',
-        url: '#sendCode/index',
-        groupname: '资源管理',
-        group: 'resource',
-        icon: 'fa fa-car'
-    }, {
-        name: '车辆轨迹列表',
-        code: '00024',
-        url: 'javascript:void(0)',
-        groupname: '报表管理',
-        group: 'report',
-        icon: 'fa fa-pie-chart'
-    }, {
-        name: '车辆报警报表',
-        code: '00025',
-        url: 'javascript:void(0)',
-        groupname: '报表管理',
-        group: 'report',
-        icon: 'fa fa-pie-chart'
-    }, {
-        name: '车辆里程统计',
-        code: '00026',
-        url: 'javascript:void(0)',
-        groupname: '报表管理',
-        group: 'report',
-        icon: 'fa fa-pie-chart'
-    }, {
-        name: '设备指令记录',
-        code: '00027',
-        url: 'javascript:void(0)',
-        groupname: '报表管理',
-        group: 'report',
-        icon: 'fa fa-pie-chart'
-    }];
+            name: '车辆监控',
+            code: '00016',
+            url: '#carMonitor/index',
+            groupname: '位置监控',
+            group: 'carmonitor',
+            icon: 'icon-position'
+        }, {
+            name: '历史位置查询',
+            code: '00011',
+            url: '#historyLocation/index',
+            groupname: '位置监控',
+            group: 'carmonitor',
+            icon: ''
+        }, {
+            name: '地标点管理',
+            code: '00030',
+            url: '#landmarkPointManager/index',
+            groupname: '位置监控',
+            group: 'carmonitor',
+            icon: ''
+        }, {
+            name: '组织用户管理',
+            code: '00007',
+            url: '#orgUserManager/index',
+            groupname: '组织机构',
+            group: 'users',
+            icon: 'icon-org'
+        }, {
+            name: '角色管理',
+            code: '00006',
+            url: '#roleManager/index',
+            groupname: '组织机构',
+            group: 'users',
+            icon: ''
+        },
+        /*{
+            name: '订单管理',
+            code: '00018',
+            url: '#orderManager/index',
+            groupname: '订单管理',
+            group: 'order',
+            icon: 'fa fa-list'
+        }, {
+            name: '投诉管理',
+            code: '00009',
+            url: '#complaintManager/index',
+            groupname: '订单管理',
+            group: 'order',
+            icon: 'fa fa-list'
+        }, {
+            name: '坐席管理',
+            code: '00010',
+            url: '#seatsManager/index',
+            groupname: '订单管理',
+            group: 'order',
+            icon: 'fa fa-list'
+        }, {
+            name: '车辆订单配置',
+            code: '00012',
+            url: '#carOrderConfig/index',
+            groupname: '订单管理',
+            group: 'order',
+            icon: 'fa fa-list'
+        },*/
+        {
+            name: '车辆管理',
+            code: '00005',
+            url: '#carManager/index',
+            groupname: '车辆信息',
+            group: 'resource',
+            icon: 'icon-car'
+        }, {
+            name: 'GPS设备管理',
+            code: '00020',
+            url: 'javascript:void(0)',
+            groupname: '车辆信息',
+            group: 'resource',
+            icon: ''
+        }, {
+            name: '通讯卡管理',
+            code: '00021',
+            url: 'javascript:void(0)',
+            groupname: '车辆信息',
+            group: 'resource',
+            icon: ''
+        }, {
+            name: '司机管理',
+            code: '00022',
+            url: 'javascript:void(0)',
+            groupname: '车辆信息',
+            group: 'resource',
+            icon: ''
+        }, {
+            name: '指令发送',
+            code: '00029',
+            url: '#sendCode/index',
+            groupname: '车辆信息',
+            group: 'resource',
+            icon: ''
+        }, {
+            name: '车辆轨迹列表',
+            code: '00024',
+            url: 'javascript:void(0)',
+            groupname: '报表管理',
+            group: 'report',
+            icon: 'fa fa-pie-chart'
+        }, {
+            name: '车辆报警报表',
+            code: '00025',
+            url: 'javascript:void(0)',
+            groupname: '报表管理',
+            group: 'report',
+            icon: ''
+        }, {
+            name: '车辆里程统计',
+            code: '00026',
+            url: 'javascript:void(0)',
+            groupname: '报表管理',
+            group: 'report',
+            icon: ''
+        }, {
+            name: '设备指令记录',
+            code: '00027',
+            url: 'javascript:void(0)',
+            groupname: '报表管理',
+            group: 'report',
+            icon: ''
+        }
+    ];
 
     /*js对象扩展*/
     Date.prototype.format = function(format) {

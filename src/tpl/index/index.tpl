@@ -1,18 +1,17 @@
-<div class="index-header clearfix">    
-    <h3 class="index-title">
-        GPS车辆监控定位系统
-    </h3>
-    <div class="pull-right userinfo-container">
-        <div class="userinfo">
-            欢迎您，&nbsp;&nbsp;<span class="ja_userName"></span>
-        </div>        
-        <div class="logout js_changpwd">
+<div class="main-header clearfix">
+    <div class="pull-left main-title">
+        车辆智能管理系统
+    </div>
+    <div class="pull-right user-info">
+        <div class="pull-left user-name">
+            欢迎您,&nbsp;&nbsp;<span class="ja_userName"></span>
+        </div>
+        <!--<div class="logout js_changpwd">
             <img src="http://dev.demo.cn/JHGPS/src/img/changpwd.png" alt="">
             <span>修改密码</span>
-        </div>
-        <div class="logout js_logout">
-            <img src="http://dev.demo.cn/JHGPS/src/img/logout.png" alt="">
-            <span>退出</span>
+        </div>-->
+        <div class="pull-left">
+            <a class="user-logout js_logout">退出</a>
         </div>
     </div>
 </div>
@@ -20,13 +19,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar-content">
-                <div class="scrollbar-macosx">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="bs-component">
-                                <div class="example sidebar sidebar-min" id="sidebar-mini">
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="menu" id="menu">
                         </div>
                     </div>
                 </div>

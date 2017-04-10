@@ -12,15 +12,22 @@ define(function(require, exports, module) {
             // 选中当前菜单项
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
-                var li = $(currTarget).parent();
-                var menuLi = $(li).parents('li');
-                $('ul.submenu > li').removeClass('active');
-                $(li).addClass('active');
-                if (!menuLi.hasClass('active')) {
-                    menuLi.siblings().removeClass('active');
-                    menuLi.addClass('active');
-                }
+                // var li = $(currTarget).parent();
+                // var menuLi = $(li).parents('li');
+                // $('ul.submenu > li').removeClass('active');
+                // $(li).addClass('active');
+                // if (!menuLi.hasClass('active')) {
+                //     menuLi.siblings().removeClass('active');
+                //     menuLi.addClass('active');
+                // }
+                // $(menuLi).children('.submenu').removeClass('hidden');
+                // var oldIcon = $(menuLi).find('a > i').attr('icon');
+                // $(menuLi).find('a > i').addClass(oldIcon + '-active');
             }
+            $(".menu h3.menu-head").off().on('click', function() {
+                $(this).addClass("current").next("div.menu-body").slideToggle(300).siblings("div.menu-body").slideUp("fast");
+                $(this).siblings().removeClass("current");
+            });
         },
         _init: function() {
             var me = this;
@@ -34,14 +41,14 @@ define(function(require, exports, module) {
                             window.location.hash = '#login/login';
                             return false;
                         }
-                        if ($('#sidebar-mini > ul.nav-list').length < 1) {
+                        if ($('#menu > ul.nav-list').length < 1) {
                             require.async('./../tpl/index/index', function(tpl) {
                                 $('#contentBody').empty().html(template.compile(tpl)());
                                 // 获取用户配置权限，初始化菜单
                                 common.getUserMenu(function(data) {
                                     if (data.length > 0) {
                                         require.async('./../tpl/menu/index', function(tpl) {
-                                            $('#sidebar-mini').empty().html(template.compile(tpl)({ data: data }));
+                                            $('#menu').empty().html(template.compile(tpl)({ data: data }));
                                             if (href != 'authorize') {
                                                 me.changeMenu(href);
                                             }

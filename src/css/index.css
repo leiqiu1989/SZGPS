@@ -315,107 +315,150 @@
 
 /*index布局样式*/
 /* header style*/
-.index-header {
-  padding: 5px 10px;
-  background-color: #3E5775; }
-  .index-header > img {
-    float: left; }
-  .index-header .index-title {
-    float: left;
-    margin: 10px;
+.main-header {
+  padding: 0px 10px;
+  background-color: #2d3741;
+  color: #fff;
+  cursor: default; }
+  .main-header .main-title {
+    margin: 5px;
     letter-spacing: 2px;
-    color: #fff;
-    height: 32px;
-    padding-left: 65px;
+    height: 39px;
+    line-height: 39px;
+    padding-left: 55px;
+    font-size: 17px;
     background: url("./../img/logo.png") no-repeat; }
-  .index-header .userinfo-container {
-    position: relative;
-    top: 13px;
-    font-size: 14px; }
-    .index-header .userinfo-container .userinfo {
-      color: #fff;
+  .main-header .user-info {
+    height: 50px;
+    line-height: 50px; }
+    .main-header .user-info .user-name {
       padding: 0 10px;
       display: inline-block; }
-      .index-header .userinfo-container .userinfo .dropdown {
-        cursor: pointer;
-        margin-left: 5px;
-        background: url("./../img/drop.png") no-repeat;
-        width: 14px;
-        height: 9px;
-        display: inline-block; }
-    .index-header .userinfo-container .logout {
+    .main-header .user-info .user-logout {
       cursor: pointer;
       width: 100px;
+      height: 30px;
       display: inline-block;
+      line-height: 30px;
       position: relative;
-      padding-left: 10px;
-      border-left: 1px solid #ccc;
-      top: -1px;
-      height: 23px; }
-      .index-header .userinfo-container .logout span {
-        color: #fff;
-        position: absolute;
-        top: 1px;
-        display: inline-block;
-        padding-left: 10px; }
+      background: url("./../img/logout.png") no-repeat 10% 7px;
+      border: 1px solid #000;
+      text-align: center;
+      color: #fff; }
+      .main-header .user-info .user-logout:hover {
+        text-decoration: none; }
 
 /*content*/
 @media (min-width: 768px) {
   div.admin .sidebar-content {
     position: absolute;
     z-index: 999;
-    top: 60px !important;
+    top: 50px !important;
     bottom: 0;
     left: 0;
     display: block;
     padding: 0;
     border-right: 1px solid #ccc;
-    background-color: #f5f5f5; } }
+    background-color: #f7f7f7; } }
 div.admin .main-fixed {
   position: absolute;
-  top: 60px !important;
+  top: 50px !important;
   bottom: 0;
   padding-right: 0;
-  padding-left: 52px !important;
+  padding-left: 220px !important;
   background: #fff !important; }
 
 /*sidebar style patch*/
 .admin.admin-min .sidebar-content {
-  width: 52px;
+  width: 220px;
   padding-top: 20px; }
 
-.sidebar.sidebar-min {
-  width: 50px; }
-  .sidebar.sidebar-min .nav-list > li > .submenu {
-    left: 52px;
-    margin-top: -10px;
-    border-left-width: 0; }
-  .sidebar.sidebar-min .nav-list > li > a > .menu-text {
-    font-size: 16px;
-    line-height: 40px;
-    left: 52px;
-    height: 40px; }
-  .sidebar.sidebar-min .nav-list > li > a > .menu-icon {
-    font-size: 30px;
-    line-height: 50px;
-    height: 50px; }
+.menu {
+  width: 220px; }
+  .menu .menu-head {
+    height: 47px;
+    line-height: 47px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #525252;
+    cursor: pointer;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    border-top: 1px solid #F1F1F1;
+    position: relative;
+    margin: 0px;
+    font-weight: bold;
+    background: #f1f1f1 url("./../img/pro_left.png") center right no-repeat; }
+  .menu .current {
+    background: #f1f1f1 url("./../img/pro_down.png") center right no-repeat; }
+  .menu .menu-body {
+    line-height: 38px;
+    border-left: 1px solid #e1e1e1;
+    background: #fff;
+    border-right: 1px solid #e1e1e1; }
+    .menu .menu-body a {
+      display: block;
+      height: 38px;
+      line-height: 38px;
+      padding-left: 38px;
+      color: #777777;
+      background: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #e1e1e1; }
+      .menu .menu-body a:hover {
+        text-decoration: none; }
 
-.sidebar .nav-list > li {
-  margin: 15px 0; }
-  .sidebar .nav-list > li .submenu > li > a {
-    font-size: 14px; }
-  .sidebar .nav-list > li > a {
-    line-height: 50px;
-    width: 52px;
-    height: 50px; }
+.menu-icon {
+  display: inline-block;
+  width: 20px;
+  height: 24px; }
 
-.sidebar .nav-lsit > li .submenu > li:before {
-  top: 19.5px; }
-.sidebar .nav-lsit > li .submenu > li > a {
-  padding: 10px;
-  padding-left: 37px; }
-  .sidebar .nav-lsit > li .submenu > li > a:before {
-    top: 10px; }
+.icon-position {
+  background: url("./../img/position2.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-position-active {
+  background: url("./../img/position1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-car {
+  background: url("./../img/truckicon2.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-car-active {
+  background: url("./../img/truckicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-org {
+  background: url("./../img/orgicon2.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-org-active {
+  background: url("./../img/orgicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-sys {
+  background: url("./../img/infoicon2.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-sys-active {
+  background: url("./../img/infoicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-right {
+  background: #f7f7f7 url("./../img/open2.png") no-repeat 90% 13.5px; }
+
+.icon-down-active {
+  background: #f7f7f7 url("./../img/open3.png") no-repeat 90% 13.5px; }
 
 /*公共样式*/
 /*重写或者补充框架样式*/
