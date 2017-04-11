@@ -21,7 +21,7 @@ define(function(require, exports, module) {
             url: '#carMonitor/index',
             groupname: '位置监控',
             group: 'carmonitor',
-            icon: 'icon-position'
+            icon: 'fa fa-map-marker'
         }, {
             name: '历史位置查询',
             code: '00011',
@@ -42,7 +42,7 @@ define(function(require, exports, module) {
             url: '#orgUserManager/index',
             groupname: '组织机构',
             group: 'users',
-            icon: 'icon-org'
+            icon: 'fa fa-users'
         }, {
             name: '角色管理',
             code: '00006',
@@ -86,7 +86,7 @@ define(function(require, exports, module) {
             url: '#carManager/index',
             groupname: '车辆信息',
             group: 'resource',
-            icon: 'icon-car'
+            icon: 'fa fa-car'
         }, {
             name: 'GPS设备管理',
             code: '00020',
