@@ -1244,7 +1244,7 @@ input.datetimepicker {
 
 .datatable-header {
     padding-right: 17px;
-    border-bottom: 2px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
 }
 
 .datatable-header thead>tr>th {
