@@ -146,6 +146,7 @@ define(function(require, exports, module) {
                         $('#carMonitorList').empty().html(template.compile(tpls.carList)({
                             data: data
                         }));
+                        common.niceScroll('#carMonitorList');
                         if (data.length > 0) {
                             // 清除数据
                             map.clearData();

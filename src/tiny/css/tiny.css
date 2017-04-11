@@ -2241,12 +2241,12 @@ body.admin .main-fixed {
 }
 
 .admin.admin-min .sidebar-content {
-    width: 42px;
+    /*width: 42px;*/
     overflow: visible;
 }
 
 .admin.admin-min .main-fixed {
-    padding-left: 42px;
+    /*padding-left: 42px;*/
     margin-left: 0;
     width: 100%;
 }

@@ -9,11 +9,36 @@ define(function(require, exports, module) {
             $('.ja_userName').text(common.getCookie('username'));
         },
         changeMenu: function(href, isReload) {
+            // 菜单toggle
             $(".accordion .link").off().on('click', function() {
                 $this = $(this), $next = $this.next();
                 $next.slideToggle();
                 $this.parent().toggleClass('open');
                 $('.accordion').find('.submenu').not($next).slideUp().parent().removeClass('open');
+            });
+            // 菜单隐藏显示
+            $('.js-toggleMenu').off().on('click', function() {
+                var status = $(this).data('open');
+                var property = {
+                    opacity: '',
+                    calNum: ''
+                };
+                if (status) {
+                    property.calNum = "220px";
+                    property.opacity = '1';
+                    status = false;
+                } else {
+                    property.calNum = "0px";
+                    property.opacity = '0';
+                    status = true;
+                }
+                $(this).data('open', status);
+                $('.sidebar-content').animate({ width: property.calNum, opacity: property.opacity }, 1000);
+                $('#main-content').animate({ 'paddingLeft': property.calNum }, 1000);
+                $('.vehicle-box').animate({ 'left': property.calNum }, 1000);
+                if ($('.monitorList').size() > 0) {
+                    $('.monitorList').animate({ 'left': property.calNum }, 1000);
+                }
             });
             // 选中当前菜单项
             var currTarget = $('a[href="#' + href + '"');
@@ -27,7 +52,6 @@ define(function(require, exports, module) {
                     $a.addClass('active');
                 }
             }
-
         },
         _init: function() {
             var me = this;

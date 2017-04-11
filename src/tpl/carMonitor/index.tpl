@@ -3,13 +3,13 @@
     <!--车辆列表-->
     <div class="monitorList">
         <div class="monitorBar clearfix">
-            <div class="monitorOrganizationText pull-left js-origin">组织列表</div>
+            <div class="monitorOrganizationIcon pull-left js-origin"></div>
             <div class="monitorCarSummary pull-left">
-                <span>加载车辆：</span><span class="monitorCarNumberColor js-carTotal">0</span>
-                <span>在线：</span><span class="monitorCarNumberColor js-onLineTotal">0</span>
-                <span>离线：</span><span class="monitorCarNumberColor js-offLineTotal">0</span>
+                <span class="active">加载车辆<span class="js-carTotal">0</span></span>
+                <span class="online">在线<span class="js-onLineTotal">0</span></span>
+                <span class="offline">离线<span class="js-offLineTotal">0</span></span>
             </div>
-            <div class="monitorCarSearch pull-left">
+            <!--<div class="monitorCarSearch pull-left">
                 <div class="inline-block mr10">
                     <span>车牌号码：</span>
                     <input type="text" class="normalText" placeholder="请输入车牌号" />
@@ -19,7 +19,7 @@
                         查 询
                     </a>
                 </div>
-            </div>
+            </div>-->
             <div class="pull-right">
                 <a class="foldUp js-foldToggle"></a>
             </div>
@@ -27,7 +27,7 @@
         <div class="monitorBody">
             <div class="panel no-margin flexbox">
                 <div class="panel-heading no-padding datatable-header">
-                    <table class="table no-margin">
+                    <table class="table table-bordered no-margin">
                         <colgroup>
                             <col width="50px" />
                             <col width="10%" />
@@ -52,7 +52,7 @@
                         </thead>
                     </table>
                 </div>
-                <div id="carMonitorList" class="datatable-content panel-body no-padding grow">                    
+                <div id="carMonitorList" class="datatable-content panel-body no-padding grow">
                 </div>
             </div>
         </div>

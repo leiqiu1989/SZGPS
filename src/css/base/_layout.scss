@@ -42,28 +42,14 @@
 
 /*content*/
 
-@media (min-width: 768px) {
-    div.admin .sidebar-content {
-        position: absolute;
-        z-index: 999;
-        top: 50px !important;
-        bottom: 0;
-        left: 0;
-        display: block;
-        padding: 0;
-        border-right: 1px solid #ccc;
-        background-color: #f7f7f7;
-    }
-}
-
 div.admin {
     .main-fixed {
         position: absolute;
         top: 50px !important;
         bottom: 0;
         padding-right: 0;
-        padding-left: 220px !important;
-        background: #fff !important;
+        padding-left: 220px;
+        background: #fff;
     }
 }
 
@@ -73,13 +59,20 @@ div.admin {
 .admin.admin-min .sidebar-content {
     width: 220px;
     padding-top: 20px;
+    position: absolute;
+    z-index: 999;
+    top: 50px !important;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    border-right: 1px solid #ccc;
+    background-color: #f7f7f7;
 }
 
 
 /* menu */
 
 #menu {
-    width: 220px;
     a {
         color: #b63b4d;
         text-decoration: none;
@@ -143,7 +136,7 @@ div.admin {
         font-size: 14px;
         li {
             border-bottom: 1px solid #ccc;
-            border-right: 1px solid #ccc;
+            // border-right: 1px solid #ccc;
         }
         a {
             display: block;
@@ -164,6 +157,14 @@ div.admin {
             }
         }
     }
+}
+
+.zoomIcon {
+    position: absolute;
+    top: 8px;
+    left: 12%;
+    cursor: pointer;
+    padding: 0 10px;
 }
 
 .menu-icon {
