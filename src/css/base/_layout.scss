@@ -126,24 +126,23 @@ div.admin {
     }
     .submenu {
         display: none;
-        background: #efefef;
+        background: #fff;
         font-size: 14px;
         li {
             border-bottom: 1px solid #ccc;
-            // border-right: 1px solid #ccc;
         }
         a {
             display: block;
             text-decoration: none;
-            color: #777;
+            color: #464646;
             padding: 12px;
             padding-left: 42px;
             -webkit-transition: all 0.25s ease;
             -o-transition: all 0.25s ease;
             transition: all 0.25s ease;
             &:hover:not(.active) {
-                background: #464444;
-                color: #FFF;
+                background: #eeeeee;
+                color: #464646;
             }
             &.active {
                 color: #222;
@@ -153,50 +152,54 @@ div.admin {
     }
 }
 
-.nav-list>li {
-    >.submenu {
-        left: 52px;
-        margin-top: -10px;
-        border-left-width: 0;
-    }
-    >a {
-        >.menu-text {
-            font-size: 16px;
-            line-height: 40px;
+.sidebar.sidebar-min {
+    width: 50px;
+    .nav-list>li {
+        >.submenu {
             left: 52px;
-            height: 40px;
+            margin-top: -10px;
+            border-left-width: 0;
         }
-        >.menu-icon {
-            font-size: 30px;
+        >a {
+            >.menu-text {
+                font-size: 16px;
+                line-height: 40px;
+                left: 52px;
+                height: 40px;
+            }
+            >.menu-icon {
+                font-size: 30px;
+                line-height: 50px;
+                height: 50px;
+            }
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+    .nav-list>li {
+        margin: 15px 0;
+        .submenu>li>a {
+            font-size: 14px;
+        }
+        >a {
             line-height: 50px;
+            width: 52px;
             height: 50px;
         }
     }
-}
-
-.nav-list>li {
-    margin: 15px 0;
-    .submenu>li>a {
-        font-size: 14px;
-    }
-    >a {
-        line-height: 50px;
-        width: 52px;
-        height: 50px;
-    }
-}
-
-.nav-lsit {
-    >li {
-        .submenu>li {
-            &:before {
-                top: 19.5px;
-            }
-            >a {
-                padding: 10px;
-                padding-left: 37px;
+    .nav-list {
+        >li {
+            .submenu>li {
                 &:before {
-                    top: 10px;
+                    top: 19.5px;
+                }
+                >a {
+                    padding: 10px;
+                    padding-left: 37px;
+                    &:before {
+                        top: 10px;
+                    }
                 }
             }
         }
@@ -204,9 +207,9 @@ div.admin {
 }
 
 .zoomIcon {
-    position: absolute;
-    top: 8px;
-    left: 12%;
+    float: left;
+    height: 50px;
+    line-height: 50px;
     cursor: pointer;
     padding: 0 10px;
 }

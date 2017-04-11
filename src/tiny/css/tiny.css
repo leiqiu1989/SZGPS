@@ -565,7 +565,7 @@ input[type="checkbox"] {
     width: 3px;
     max-width: 3px;
     overflow: hidden;
-    background-color: #2b7dbc;
+    background-color: #222;
 }
 
 .sidebar .nav-list>li:hover:before {

@@ -1,9 +1,9 @@
 <div class="main-header clearfix">
     <div class="pull-left main-title">
         车辆智能管理系统
-        <div class="zoomIcon js-toggleMenu">
-            <i class="fa fa-bars"></i>
-        </div>
+    </div>
+    <div class="zoomIcon js-toggleMenu">
+        <i class="fa fa-bars"></i>
     </div>
     <div class="pull-right user-info">
         <div class="pull-left user-name">

@@ -9,7 +9,27 @@ define(function(require, exports, module) {
             // 显示当前登录名
             $('.ja_userName').text(common.getCookie('username'));
         },
-        changeMenu: function(href, isReload) {
+        getHref: function() {
+            var hash = window.location.hash.replace('#', ''),
+                arr = hash.split('/'),
+                len = arr.length;
+
+            if (hash.indexOf('=') == -1) {
+                return hash;
+            }
+
+            return arr.splice(0, len - 1).join('/');
+        },
+        adjustBox: function(calNum) {
+            calNum = calNum || '52px';
+            $('.sidebar-content').css('width', calNum);
+            $('#main-content').css('paddingLeft', calNum);
+            $('.vehicle-box').animate({ 'left': calNum }, 500);
+            if ($('.monitorList').size() > 0) {
+                $('.monitorList').animate({ 'left': calNum }, 500);
+            }
+        },
+        event: function() {
             var me = this;
             // 菜单toggle
             $(".accordion .link").off().on('click', function() {
@@ -20,9 +40,9 @@ define(function(require, exports, module) {
             });
             // 菜单隐藏显示
             $('.js-toggleMenu').off().on('click', function() {
+                var href = me.getHref();
                 var status = $(this).data('open');
                 var property = {
-
                     calNum: ''
                 };
                 if (status) {
@@ -33,29 +53,35 @@ define(function(require, exports, module) {
                     status = true;
                 }
                 $(this).data('open', status);
-                $('.sidebar-content').animate({ width: property.calNum }, 1000);
-                $('#main-content').animate({ 'paddingLeft': property.calNum }, 1000);
-                if (status) {
-                    me.initMenu(href, true);
-                } else {
-                    me.initMenu(href, false);
-                }
-                $('#sidebar-menu').toggleClass('sidebar sidebar-min')
-                    // $('.vehicle-box').animate({ 'left': property.calNum }, 1000);
-                    // if ($('.monitorList').size() > 0) {
-                    //     $('.monitorList').animate({ 'left': property.calNum }, 1000);
-                    // }
+                me.initMenu(href, status);
+                $('#sidebar-menu').toggleClass('sidebar sidebar-min');
+                me.adjustBox(property.calNum);
             });
-            // 选中当前菜单项
+        },
+        changeMenu: function(href) {
+            var me = this;
+            var menuOpen = $('.js-toggleMenu').data('open')
+                // 选中当前菜单项
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
-                var $a = $(currTarget);
-                if (isReload) {
-                    $a.addClass('active');
-                    $a.closest('.submenu').prev().click();
+                var $submenu = $(currTarget).closest('ul.submenu');
+                if (menuOpen) {
+                    var li = $(currTarget).parent();
+                    var menuLi = $(li).parents('li');
+                    $('ul.submenu > li').removeClass('active');
+                    $(li).addClass('active');
+                    if (!menuLi.hasClass('active')) {
+                        menuLi.siblings().removeClass('active');
+                        menuLi.addClass('active');
+                    }
+                    setTimeout(function() {
+                        me.adjustBox();
+                    }, 500);
                 } else {
+                    $submenu.show();
+                    $submenu.parent().addClass('open');
                     $('.accordion .submenu > li > a').removeClass('active');
-                    $a.addClass('active');
+                    $(currTarget).addClass('active');
                 }
             }
         },
@@ -65,9 +91,10 @@ define(function(require, exports, module) {
             require.async('./../tpl/menu/index', function(tpl) {
                 $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, expand: expand || false }));
                 if (href != 'authorize') {
-                    me.changeMenu(href, true);
+                    me.changeMenu(href);
                 }
                 me.setUserName();
+                me.event(href);
             });
         },
         _init: function() {
@@ -89,7 +116,7 @@ define(function(require, exports, module) {
                                 common.getUserMenu(function(data) {
                                     if (data.length > 0) {
                                         me.menuData = data;
-                                        me.initMenu(href);
+                                        me.initMenu(href, false);
                                     } else {
                                         window.location.hash = '#authorize/index';
                                         return false;
@@ -98,7 +125,7 @@ define(function(require, exports, module) {
                             });
                         } else {
                             me.setUserName();
-                            me.changeMenu(href, false);
+                            me.changeMenu(href);
                         }
                         // 清除监控
                         if (mod !== 'carMonitor') {
