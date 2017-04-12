@@ -528,6 +528,9 @@ div.admin .main-fixed {
   background: #f7f7f7 url("./../img/open3.png") no-repeat 90% 13.5px; }
 
 /*公共样式*/
+*:focus {
+  outline: none; }
+
 /*重写或者补充框架样式*/
 .btn {
   padding: 4px 12px; }
@@ -1026,6 +1029,9 @@ dl dd {
     height: 300px;
     width: 100%; }
 
+#main-content .leftByCollapse {
+  left: 52px; }
+
 .status, .carOpen, .carClose {
   display: inline-block;
   width: 22px;
@@ -1055,7 +1061,8 @@ dl dd {
   border-right: 1px solid #c9c9c9;
   border-bottom: 1px solid #c9c9c9;
   background-color: rgba(255, 255, 255, 0.98);
-  background-color: #fff \9; }
+  background-color: #fff \9;
+  z-index: 1; }
   .vehicle-box .vehicle-header {
     border-bottom: 1px solid #eee; }
     .vehicle-box .vehicle-header .vehicle-title {
@@ -1195,6 +1202,81 @@ dl dd {
 
 .point_btn_info.br {
   border-right: 1px solid #c9c9c9; }
+
+/*地图工具栏*/
+.mapTools {
+  position: absolute;
+  top: 30px;
+  left: 18%;
+  font-size: 16px; }
+  .mapTools .icon, .mapTools .sectionIcon, .mapTools .obd {
+    display: inline-block;
+    padding: 10px;
+    width: 120px;
+    padding-left: 40px;
+    cursor: pointer;
+    color: #555;
+    box-shadow: 3px 3px 5px #CFCCC7; }
+  .mapTools .sectionIcon {
+    background: #fff url("./../img/selecticon.png") no-repeat 10px; }
+  .mapTools .inputSearch {
+    display: inline-block;
+    background-color: #fff;
+    margin-left: 15px;
+    box-shadow: 3px 3px 5px #CFCCC7; }
+    .mapTools .inputSearch span {
+      color: #555;
+      padding: 10px;
+      display: inline-block; }
+      .mapTools .inputSearch span:after {
+        content: '|';
+        padding-left: 10px; }
+    .mapTools .inputSearch input[type="text"] {
+      height: 40px;
+      padding-left: 5px;
+      border: 0; }
+    .mapTools .inputSearch a {
+      display: block;
+      width: 40px;
+      height: 42px;
+      background: #4b83be url("./../img/search.png") no-repeat center;
+      position: absolute;
+      top: 0px;
+      right: -40px;
+      box-shadow: 3px 3px 5px #CFCCC7; }
+  .mapTools .obd {
+    background: #fff url("./../img/messageicon.png") no-repeat 10px;
+    margin-left: 50px; }
+
+/*OBD信息*/
+.OBDInfo {
+  width: 300px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: #fff; }
+  .OBDInfo .obd-Title {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+    color: #555; }
+    .OBDInfo .obd-Title .odb-close {
+      cursor: pointer; }
+    .OBDInfo .obd-Title > span {
+      font-weight: 700; }
+  .OBDInfo .obd-Content {
+    padding: 10px; }
+    .OBDInfo .obd-Content > ul > li {
+      padding: 5px 0;
+      color: #666;
+      font-size: 14px; }
+      .OBDInfo .obd-Content > ul > li > span:last-child {
+        float: right;
+        margin-right: 5px; }
+    .OBDInfo .obd-Content .obd-group {
+      font-size: 16px;
+      color: #333;
+      font-weight: 700; }
 
 /*轨迹样式*/
 .track-container {
@@ -1723,7 +1805,7 @@ body {
       height: 40px;
       padding-left: 5px;
       border: 1px solid #ccc; }
-    #login .group-row .icon {
+    #login .group-row .icon, #login .group-row .mapTools .sectionIcon, .mapTools #login .group-row .sectionIcon, #login .group-row .mapTools .obd, .mapTools #login .group-row .obd {
       border: 1px solid #ccc;
       border-right: 0;
       float: left;
@@ -2202,5 +2284,69 @@ background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);*/
     background-size: 52px 37px !important;
     background-repeat: no-repeat !important; } }
 /* @end */
+/*表格*/
+.grid {
+  position: relative;
+  background-color: #fff; }
+  .grid .table-head {
+    zoom: 1;
+    padding-right: 23px;
+    color: #333;
+    border-color: #e6e6e6;
+    border-bottom-width: 1px;
+    border-bottom-style: solid; }
+    .grid .table-head .table-head-warp {
+      position: relative;
+      overflow: hidden;
+      zoom: 1;
+      width: 100%;
+      border-width: 0 1px 0 0;
+      border-style: solid;
+      border-color: #e6e6e6; }
+      .grid .table-head .table-head-warp table th {
+        line-height: 40px;
+        overflow: hidden;
+        height: 40px;
+        padding-left: 10px;
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        border-width: 0 0 0 1px;
+        border-style: solid;
+        border-color: #e6e6e6; }
+
+.grid-table {
+  width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  empty-cells: show;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-width: 0;
+  outline: 0; }
+
+.grid-content {
+  position: relative;
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%; }
+  .grid-content table > tbody tr > td {
+    position: relative;
+    line-height: 40px;
+    height: 40px;
+    padding-left: 10px;
+    border: 1px solid #e2e3e7; }
+    .grid-content table > tbody tr > td a {
+      color: #4e87f8; }
+    .grid-content table > tbody tr > td .tdFix {
+      position: absolute;
+      top: 0;
+      right: 24px; }
+  .grid-content table > tbody tr:first-child > td {
+    border-top-width: 0; }
+  .grid-content table > tbody tr:hover {
+    background-color: #ebebeb; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,4 +1,4 @@
-<% var ulcls = expand ? 'nav nav-list' : 'accordion' %>
+<% var ulcls = collapse ? 'nav nav-list' : 'accordion' %>
 
     <ul class="<%= ulcls %>">
         <% 
@@ -9,7 +9,7 @@ var icon= subMenus[0].icon;
 var groupname= subMenus[0].groupname;
 %>
             <li>
-                <%if(!expand){%>
+                <%if(!collapse){%>
                     <div class="link">
                         <i class="menu-icon <%= icon %>"></i>
                         <%= groupname %>

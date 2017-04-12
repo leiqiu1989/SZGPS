@@ -81,6 +81,10 @@
     }
 }
 
+#main-content .leftByCollapse {
+    left: 52px;
+}
+
 .status {
     display: inline-block;
     width: 22px;
@@ -118,6 +122,7 @@
     border-bottom: 1px solid #c9c9c9;
     background-color: rgba(255, 255, 255, 0.98);
     background-color: #fff \9;
+    z-index: 1;
     .vehicle-header {
         border-bottom: 1px solid #eee;
         .vehicle-title {
@@ -293,4 +298,102 @@
 
 .point_btn_info.br {
     border-right: 1px solid #c9c9c9;
+}
+
+
+/*地图工具栏*/
+
+.mapTools {
+    position: absolute;
+    top: 30px;
+    left: 18%;
+    font-size: 16px;
+    .icon {
+        display: inline-block;
+        padding: 10px;
+        width: 120px;
+        padding-left: 40px;
+        cursor: pointer;
+        color: #555;
+        box-shadow: 3px 3px 5px #CFCCC7;
+    }
+    .sectionIcon {
+        @extend .icon;
+        background: #fff url('./../img/selecticon.png') no-repeat 10px;
+    }
+    .inputSearch {
+        display: inline-block;
+        background-color: #fff;
+        margin-left: 15px;
+        box-shadow: 3px 3px 5px #CFCCC7;
+        span {
+            color: #555;
+            padding: 10px;
+            display: inline-block;
+            &:after {
+                content: '|';
+                padding-left: 10px;
+            }
+        }
+        input[type="text"] {
+            height: 40px;
+            padding-left: 5px;
+            border: 0;
+        }
+        a {
+            display: block;
+            width: 40px;
+            height: 42px;
+            background: #4b83be url('./../img/search.png') no-repeat center;
+            position: absolute;
+            top: 0px;
+            right: -40px;
+            box-shadow: 3px 3px 5px #CFCCC7;
+        }
+    }
+    .obd {
+        @extend .icon;
+        background: #fff url('./../img/messageicon.png') no-repeat 10px;
+        margin-left: 50px;
+    }
+}
+
+
+/*OBD信息*/
+
+.OBDInfo {
+    width: 300px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: #fff;
+    .obd-Title {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        font-size: 16px;
+        color: #555;
+        .odb-close {
+            cursor: pointer;
+        }
+        >span {
+            font-weight: 700;
+        }
+    }
+    .obd-Content {
+        padding: 10px;
+        >ul>li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 14px;
+            >span:last-child {
+                float: right;
+                margin-right: 5px;
+            }
+        }
+        .obd-group {
+            font-size: 16px;
+            color: #333;
+            font-weight: 700;
+        }
+    }
 }

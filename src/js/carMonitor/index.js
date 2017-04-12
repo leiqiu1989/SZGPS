@@ -24,7 +24,13 @@ define(function(require, exports, module) {
         init: function(param) {
             // 赋值为null是为了,地图infowindow里面的轨迹回放返回,重新加载导致timer计时器未clear
             window.monitorTimer = null;
-            $('#main-content').empty().html(template.compile(tpls.index)());
+            // 在折叠模式下，切换到该页面 自动设置left
+            var collapse = $('.js-toggleMenu').data('collapse');
+            var cls = "";
+            if (collapse) {
+                cls = "leftByCollapse";
+            }
+            $('#main-content').empty().html(template.compile(tpls.index)({ styleCls: cls }));
             map.init('monitorMap', null, true);
             this.initControl();
         },
@@ -143,10 +149,10 @@ define(function(require, exports, module) {
                 common.ajax(api.carPositionList, { ArrVid: arrVid }, function(res) {
                     if (res && res.status === 'SUCCESS') {
                         var data = res.content || [];
-                        $('#carMonitorList').empty().html(template.compile(tpls.carList)({
+                        $('#carMonitorList table tbody').empty().html(template.compile(tpls.carList)({
                             data: data
                         }));
-                        common.niceScroll('#carMonitorList');
+                        //common.niceScroll('.table-content');
                         if (data.length > 0) {
                             // 清除数据
                             map.clearData();

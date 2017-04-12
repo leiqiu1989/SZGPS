@@ -9,7 +9,7 @@ define(function(require, exports, module) {
             // 显示当前登录名
             $('.ja_userName').text(common.getCookie('username'));
         },
-        getHref: function() {
+        getHash: function() {
             var hash = window.location.hash.replace('#', ''),
                 arr = hash.split('/'),
                 len = arr.length;
@@ -21,7 +21,6 @@ define(function(require, exports, module) {
             return arr.splice(0, len - 1).join('/');
         },
         adjustBox: function(calNum) {
-            calNum = calNum || '52px';
             $('.sidebar-content').css('width', calNum);
             $('#main-content').css('paddingLeft', calNum);
             $('.vehicle-box').animate({ 'left': calNum }, 500);
@@ -40,19 +39,19 @@ define(function(require, exports, module) {
             });
             // 菜单隐藏显示
             $('.js-toggleMenu').off().on('click', function() {
-                var href = me.getHref();
-                var status = $(this).data('open');
+                var href = me.getHash();
+                // 菜单是否折叠
+                var status = $(this).data('collapse');
                 var property = {
-                    calNum: ''
+                    calNum: '52px'
                 };
                 if (status) {
                     property.calNum = "220px";
                     status = false;
                 } else {
-                    property.calNum = "52px";
                     status = true;
                 }
-                $(this).data('open', status);
+                $(this).data('collapse', status);
                 me.initMenu(href, status);
                 $('#sidebar-menu').toggleClass('sidebar sidebar-min');
                 me.adjustBox(property.calNum);
@@ -60,8 +59,8 @@ define(function(require, exports, module) {
         },
         changeMenu: function(href) {
             var me = this;
-            var menuOpen = $('.js-toggleMenu').data('open')
-                // 选中当前菜单项
+            var menuOpen = $('.js-toggleMenu').data('collapse');
+            // 选中当前菜单项
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
                 var $submenu = $(currTarget).closest('ul.submenu');
@@ -85,11 +84,11 @@ define(function(require, exports, module) {
                 }
             }
         },
-        initMenu: function(href, expand) {
+        initMenu: function(href, collapse) {
             var me = this;
             var data = this.menuData;
             require.async('./../tpl/menu/index', function(tpl) {
-                $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, expand: expand || false }));
+                $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, collapse: collapse }));
                 if (href != 'authorize') {
                     me.changeMenu(href);
                 }
