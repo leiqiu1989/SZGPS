@@ -20,7 +20,9 @@ define(function(require, exports, module) {
 
             return arr.splice(0, len - 1).join('/');
         },
-        adjustBox: function(calNum) {
+        adjustBox: function() {
+            var expand = $('.js-toggleMenu').data('expand');
+            var calNum = expand ? '220px' : '52px';
             $('.sidebar-content').css('width', calNum);
             $('#main-content').css('paddingLeft', calNum);
             $('.vehicle-box').animate({ 'left': calNum }, 500);
@@ -40,31 +42,23 @@ define(function(require, exports, module) {
             // 菜单隐藏显示
             $('.js-toggleMenu').off().on('click', function() {
                 var href = me.getHash();
-                // 菜单是否折叠
-                var status = $(this).data('collapse');
-                var property = {
-                    calNum: '52px'
-                };
-                if (status) {
-                    property.calNum = "220px";
-                    status = false;
-                } else {
-                    status = true;
-                }
-                $(this).data('collapse', status);
-                me.initMenu(href, status);
+                // 菜单是否展开
+                var expand = $(this).data('expand');
+                expand = !!!expand
+                $(this).data('expand', expand);
+                me.initMenu(href, expand);
                 $('#sidebar-menu').toggleClass('sidebar sidebar-min');
-                me.adjustBox(property.calNum);
+                me.adjustBox();
             });
         },
-        changeMenu: function(href) {
+        // 选中菜单项
+        selectMenu: function(href) {
             var me = this;
-            var menuOpen = $('.js-toggleMenu').data('collapse');
-            // 选中当前菜单项
+            var expand = $('.js-toggleMenu').data('expand');
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
                 var $submenu = $(currTarget).closest('ul.submenu');
-                if (menuOpen) {
+                if (!expand) {
                     var li = $(currTarget).parent();
                     var menuLi = $(li).parents('li');
                     $('ul.submenu > li').removeClass('active');
@@ -73,24 +67,27 @@ define(function(require, exports, module) {
                         menuLi.siblings().removeClass('active');
                         menuLi.addClass('active');
                     }
-                    setTimeout(function() {
-                        me.adjustBox();
-                    }, 500);
                 } else {
                     $submenu.show();
                     $submenu.parent().addClass('open');
                     $('.accordion .submenu > li > a').removeClass('active');
                     $(currTarget).addClass('active');
+                    if (href === 'carMonitor/index') {
+                        setTimeout(function() {
+                            me.adjustBox();
+                        }, 100);
+                    }
                 }
             }
         },
-        initMenu: function(href, collapse) {
+        // 初始化菜单
+        initMenu: function(href, expand) {
             var me = this;
             var data = this.menuData;
             require.async('./../tpl/menu/index', function(tpl) {
-                $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, collapse: collapse }));
+                $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, expand: expand }));
                 if (href != 'authorize') {
-                    me.changeMenu(href);
+                    me.selectMenu(href);
                 }
                 me.setUserName();
                 me.event(href);
@@ -124,7 +121,7 @@ define(function(require, exports, module) {
                             });
                         } else {
                             me.setUserName();
-                            me.changeMenu(href);
+                            me.selectMenu(href);
                         }
                         // 清除监控
                         if (mod !== 'carMonitor') {

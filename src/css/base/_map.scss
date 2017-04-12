@@ -6,7 +6,7 @@
 // 车辆列表
 .monitorList {
     position: absolute;
-    left: 220px;
+    left: 52px;
     right: 0;
     bottom: 0;
     border-top: 1px solid #363f44;
@@ -81,10 +81,6 @@
     }
 }
 
-#main-content .leftByCollapse {
-    left: 52px;
-}
-
 .status {
     display: inline-block;
     width: 22px;
@@ -114,7 +110,7 @@
     display: none;
     position: absolute;
     top: 0;
-    left: 220px;
+    left: 52px;
     bottom: 41px;
     width: 355px;
     overflow-y: auto;

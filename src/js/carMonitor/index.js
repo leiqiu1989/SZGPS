@@ -24,13 +24,7 @@ define(function(require, exports, module) {
         init: function(param) {
             // 赋值为null是为了,地图infowindow里面的轨迹回放返回,重新加载导致timer计时器未clear
             window.monitorTimer = null;
-            // 在折叠模式下，切换到该页面 自动设置left
-            var collapse = $('.js-toggleMenu').data('collapse');
-            var cls = "";
-            if (collapse) {
-                cls = "leftByCollapse";
-            }
-            $('#main-content').empty().html(template.compile(tpls.index)({ styleCls: cls }));
+            $('#main-content').empty().html(template.compile(tpls.index)());
             map.init('monitorMap', null, true);
             this.initControl();
         },

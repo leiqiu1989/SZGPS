@@ -354,12 +354,12 @@ div.admin .main-fixed {
   top: 50px !important;
   bottom: 0;
   padding-right: 0;
-  padding-left: 220px;
+  padding-left: 52px;
   background: #fff; }
 
 /*sidebar style patch*/
 .admin.admin-min .sidebar-content {
-  width: 220px;
+  width: 52px;
   padding-top: 20px;
   position: absolute;
   z-index: 999;
@@ -369,6 +369,9 @@ div.admin .main-fixed {
   padding: 0;
   border-right: 1px solid #ccc;
   background-color: #f7f7f7; }
+
+.admin.admin-min .main-fixed {
+  padding-left: 52px; }
 
 /* menu */
 .accordion {
@@ -973,7 +976,7 @@ dl dd {
 
 .monitorList {
   position: absolute;
-  left: 220px;
+  left: 52px;
   right: 0;
   bottom: 0;
   border-top: 1px solid #363f44;
@@ -1029,9 +1032,6 @@ dl dd {
     height: 300px;
     width: 100%; }
 
-#main-content .leftByCollapse {
-  left: 52px; }
-
 .status, .carOpen, .carClose {
   display: inline-block;
   width: 22px;
@@ -1054,7 +1054,7 @@ dl dd {
   display: none;
   position: absolute;
   top: 0;
-  left: 220px;
+  left: 52px;
   bottom: 41px;
   width: 355px;
   overflow-y: auto;

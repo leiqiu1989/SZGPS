@@ -1,7 +1,7 @@
 <div class="panel panel-transparent full">
     <div id="monitorMap" class="full"></div>
     <!--车辆列表-->
-    <div class="monitorList <%= styleCls %>">
+    <div class="monitorList">
         <div class="monitorBar clearfix ">
             <div class="monitorOrganizationIcon pull-left js-origin "></div>
             <div class="monitorCarSummary pull-left ">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <!--组织列表-->
-    <div class="vehicle-box <%=styleCls %>">
+    <div class="vehicle-box">
         <div class="vehicle-header clearfix">
             <div class="vehicle-title pull-left">
                 <h4>组织列表</h4>
