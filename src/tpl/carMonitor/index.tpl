@@ -100,7 +100,6 @@
     </div>
     <!-- 地图搜索 -->
     <div class="mapTools">
-        <div class="sectionIcon">选框查询</div>
         <div class="inputSearch relative">
             <span>车牌号码</span>
             <input type="text" />

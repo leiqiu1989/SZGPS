@@ -301,7 +301,7 @@
 
 .mapTools {
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 18%;
     font-size: 16px;
     .icon {
@@ -312,10 +312,6 @@
         cursor: pointer;
         color: #555;
         box-shadow: 3px 3px 5px #CFCCC7;
-    }
-    .sectionIcon {
-        @extend .icon;
-        background: #fff url('./../img/selecticon.png') no-repeat 10px;
     }
     .inputSearch {
         display: inline-block;
