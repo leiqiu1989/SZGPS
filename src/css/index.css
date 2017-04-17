@@ -315,74 +315,129 @@
 
 /*index布局样式*/
 /* header style*/
-.index-header {
-  padding: 5px 10px;
-  background-color: #3E5775; }
-  .index-header > img {
-    float: left; }
-  .index-header .index-title {
-    float: left;
-    margin: 10px;
+.main-header {
+  padding: 0px 10px;
+  background-color: #2d3741;
+  color: #fff;
+  cursor: default; }
+  .main-header .main-title {
+    margin: 5px;
     letter-spacing: 2px;
-    color: #fff;
-    height: 32px;
-    padding-left: 65px;
+    height: 39px;
+    line-height: 39px;
+    padding-left: 55px;
+    font-size: 17px;
     background: url("./../img/logo.png") no-repeat; }
-  .index-header .userinfo-container {
-    position: relative;
-    top: 13px;
-    font-size: 14px; }
-    .index-header .userinfo-container .userinfo {
-      color: #fff;
+  .main-header .user-info {
+    height: 50px;
+    line-height: 50px; }
+    .main-header .user-info .user-name {
       padding: 0 10px;
       display: inline-block; }
-      .index-header .userinfo-container .userinfo .dropdown {
-        cursor: pointer;
-        margin-left: 5px;
-        background: url("./../img/drop.png") no-repeat;
-        width: 14px;
-        height: 9px;
-        display: inline-block; }
-    .index-header .userinfo-container .logout {
+    .main-header .user-info .user-logout {
       cursor: pointer;
       width: 100px;
+      height: 30px;
       display: inline-block;
+      line-height: 30px;
       position: relative;
-      padding-left: 10px;
-      border-left: 1px solid #ccc;
-      top: -1px;
-      height: 23px; }
-      .index-header .userinfo-container .logout span {
-        color: #fff;
-        position: absolute;
-        top: 1px;
-        display: inline-block;
-        padding-left: 10px; }
+      background: url("./../img/logout.png") no-repeat 10% 7px;
+      border: 1px solid #000;
+      text-align: center;
+      color: #fff; }
+      .main-header .user-info .user-logout:hover {
+        text-decoration: none; }
 
 /*content*/
-@media (min-width: 768px) {
-  div.admin .sidebar-content {
-    position: absolute;
-    z-index: 999;
-    top: 60px !important;
-    bottom: 0;
-    left: 0;
-    display: block;
-    padding: 0;
-    border-right: 1px solid #ccc;
-    background-color: #f5f5f5; } }
 div.admin .main-fixed {
   position: absolute;
-  top: 60px !important;
+  top: 50px !important;
   bottom: 0;
   padding-right: 0;
-  padding-left: 52px !important;
-  background: #fff !important; }
+  padding-left: 52px;
+  background: #fff; }
 
 /*sidebar style patch*/
 .admin.admin-min .sidebar-content {
   width: 52px;
-  padding-top: 20px; }
+  padding-top: 20px;
+  position: absolute;
+  z-index: 999;
+  top: 50px !important;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  border-right: 1px solid #ccc;
+  background-color: #f7f7f7; }
+
+.admin.admin-min .main-fixed {
+  padding-left: 52px; }
+
+/* menu */
+.accordion {
+  list-style-type: none;
+  width: 100%;
+  margin-bottom: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+  .accordion .link {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 42px;
+    color: #777;
+    font-size: 13px;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease; }
+  .accordion li:last-child .link {
+    border-bottom: 0; }
+  .accordion li i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 18px;
+    color: #595959;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease; }
+  .accordion li i.fa-chevron-down {
+    right: 15px;
+    top: 15px;
+    left: auto;
+    font-size: 16px; }
+  .accordion li.open i {
+    color: #222; }
+  .accordion li.open .link {
+    color: #222; }
+  .accordion li.open i.fa-chevron-down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg); }
+  .accordion .submenu {
+    display: none;
+    background: #fff;
+    font-size: 14px; }
+    .accordion .submenu li {
+      border-bottom: 1px solid #ccc; }
+    .accordion .submenu a {
+      display: block;
+      text-decoration: none;
+      color: #464646;
+      padding: 12px;
+      padding-left: 42px;
+      -webkit-transition: all 0.25s ease;
+      -o-transition: all 0.25s ease;
+      transition: all 0.25s ease; }
+      .accordion .submenu a:hover:not(.active) {
+        background: #eeeeee;
+        color: #464646; }
+      .accordion .submenu a.active {
+        color: #222;
+        font-weight: 700; }
 
 .sidebar.sidebar-min {
   width: 50px; }
@@ -399,25 +454,86 @@ div.admin .main-fixed {
     font-size: 30px;
     line-height: 50px;
     height: 50px; }
+  .sidebar.sidebar-min .nav-list > li > a:hover {
+    background-color: transparent; }
+  .sidebar.sidebar-min .nav-list > li {
+    margin: 15px 0; }
+    .sidebar.sidebar-min .nav-list > li .submenu > li > a {
+      font-size: 14px; }
+    .sidebar.sidebar-min .nav-list > li > a {
+      line-height: 50px;
+      width: 52px;
+      height: 50px; }
+  .sidebar.sidebar-min .nav-list > li .submenu > li:before {
+    top: 19.5px; }
+  .sidebar.sidebar-min .nav-list > li .submenu > li > a {
+    padding: 10px;
+    padding-left: 37px; }
+    .sidebar.sidebar-min .nav-list > li .submenu > li > a:before {
+      top: 10px; }
 
-.sidebar .nav-list > li {
-  margin: 15px 0; }
-  .sidebar .nav-list > li .submenu > li > a {
-    font-size: 14px; }
-  .sidebar .nav-list > li > a {
-    line-height: 50px;
-    width: 52px;
-    height: 50px; }
+.zoomIcon {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+  padding: 0 10px; }
 
-.sidebar .nav-lsit > li .submenu > li:before {
-  top: 19.5px; }
-.sidebar .nav-lsit > li .submenu > li > a {
-  padding: 10px;
-  padding-left: 37px; }
-  .sidebar .nav-lsit > li .submenu > li > a:before {
-    top: 10px; }
+.menu-icon {
+  display: inline-block;
+  width: 20px;
+  height: 24px; }
+
+.icon-position {
+  background: url("./../img/position1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-position-active {
+  background: url("./../img/position1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-car {
+  background: url("./../img/truckicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-car-active {
+  background: url("./../img/truckicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-org {
+  background: url("./../img/orgicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-org-active {
+  background: url("./../img/orgicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-sys {
+  background: url("./../img/infoicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-sys-active {
+  background: url("./../img/infoicon1.png") no-repeat;
+  position: relative;
+  top: 8px; }
+
+.icon-right {
+  background: #f7f7f7 url("./../img/open2.png") no-repeat 90% 13.5px; }
+
+.icon-down-active {
+  background: #f7f7f7 url("./../img/open3.png") no-repeat 90% 13.5px; }
 
 /*公共样式*/
+*:focus {
+  outline: none; }
+
 /*重写或者补充框架样式*/
 .btn {
   padding: 4px 12px; }
@@ -860,31 +976,42 @@ dl dd {
 
 .monitorList {
   position: absolute;
-  left: 54px;
+  left: 52px;
   right: 0;
   bottom: 0;
-  border-top: 1px solid #c9c9c9;
+  border-top: 1px solid #363f44;
   background-color: rgba(255, 255, 255, 0.98);
   background-color: #fff \9;
   font-size: 14px; }
   .monitorList .monitorBar {
-    height: 36px;
-    line-height: 36px;
-    border-bottom: 1px solid #c9c9c9; }
-    .monitorList .monitorBar .monitorOrganizationText {
-      width: 120px;
-      vertical-align: top;
+    height: 40px;
+    line-height: 40px;
+    background: #363f44;
+    border-bottom: 1px solid #363f44; }
+    .monitorList .monitorBar .monitorOrganizationIcon {
       cursor: pointer;
-      color: #4f95ff;
-      text-align: left;
-      padding-left: 10px; }
-    .monitorList .monitorBar .monitorCarSummary {
-      color: #000000;
-      font-weight: bold; }
-      .monitorList .monitorBar .monitorCarSummary span {
-        margin: 0 5px; }
-      .monitorList .monitorBar .monitorCarSummary span.monitorCarNumberColor {
-        color: #ff6666; }
+      width: 40px;
+      height: 40px;
+      background: url("./../img/moreicon.png") no-repeat center; }
+    .monitorList .monitorBar .monitorCarSummary > span {
+      cursor: default;
+      display: inline-block;
+      padding: 0 10px;
+      border-right: 1px solid #B6C0C9; }
+      .monitorList .monitorBar .monitorCarSummary > span.active {
+        color: #fff;
+        background: #4b83be; }
+      .monitorList .monitorBar .monitorCarSummary > span.online {
+        color: #0cb573; }
+      .monitorList .monitorBar .monitorCarSummary > span.offline {
+        color: #8e949f; }
+      .monitorList .monitorBar .monitorCarSummary > span:first-child {
+        border-left: 1px solid #B6C0C9;
+        border-right: 1px solid #B6C0C9; }
+      .monitorList .monitorBar .monitorCarSummary > span > span {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 16px; }
     .monitorList .monitorBar .monitorCarSearch {
       margin-left: 20px;
       width: 370px; }
@@ -897,9 +1024,9 @@ dl dd {
       width: 14px;
       height: 13px; }
     .monitorList .monitorBar .foldDown {
-      background: url("./../img/fold_down.png") no-repeat; }
+      background: url("./../img/icon1_more.png") no-repeat center; }
     .monitorList .monitorBar .foldUp {
-      background: url("./../img/fold_up.png") no-repeat; }
+      background: url("./../img/icon1_packup.png") no-repeat center; }
   .monitorList .monitorBody {
     display: none;
     height: 300px;
@@ -927,14 +1054,15 @@ dl dd {
   display: none;
   position: absolute;
   top: 0;
-  left: 53px;
-  bottom: 35px;
+  left: 52px;
+  bottom: 41px;
   width: 355px;
   overflow-y: auto;
   border-right: 1px solid #c9c9c9;
   border-bottom: 1px solid #c9c9c9;
   background-color: rgba(255, 255, 255, 0.98);
-  background-color: #fff \9; }
+  background-color: #fff \9;
+  z-index: 1; }
   .vehicle-box .vehicle-header {
     border-bottom: 1px solid #eee; }
     .vehicle-box .vehicle-header .vehicle-title {
@@ -1074,6 +1202,79 @@ dl dd {
 
 .point_btn_info.br {
   border-right: 1px solid #c9c9c9; }
+
+/*地图工具栏*/
+.mapTools {
+  position: absolute;
+  top: 25px;
+  left: 18%;
+  font-size: 16px; }
+  .mapTools .icon, .mapTools .obd {
+    display: inline-block;
+    padding: 10px;
+    width: 120px;
+    padding-left: 40px;
+    cursor: pointer;
+    color: #555;
+    box-shadow: 3px 3px 5px #CFCCC7; }
+  .mapTools .inputSearch {
+    display: inline-block;
+    background-color: #fff;
+    margin-left: 15px;
+    box-shadow: 3px 3px 5px #CFCCC7; }
+    .mapTools .inputSearch span {
+      color: #555;
+      padding: 10px;
+      display: inline-block; }
+      .mapTools .inputSearch span:after {
+        content: '|';
+        padding-left: 10px; }
+    .mapTools .inputSearch input[type="text"] {
+      height: 40px;
+      padding-left: 5px;
+      border: 0; }
+    .mapTools .inputSearch a {
+      display: block;
+      width: 40px;
+      height: 42px;
+      background: #4b83be url("./../img/search.png") no-repeat center;
+      position: absolute;
+      top: 0px;
+      right: -40px;
+      box-shadow: 3px 3px 5px #CFCCC7; }
+  .mapTools .obd {
+    background: #fff url("./../img/messageicon.png") no-repeat 10px;
+    margin-left: 50px; }
+
+/*OBD信息*/
+.OBDInfo {
+  width: 300px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: #fff; }
+  .OBDInfo .obd-Title {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    font-size: 16px;
+    color: #555; }
+    .OBDInfo .obd-Title .odb-close {
+      cursor: pointer; }
+    .OBDInfo .obd-Title > span {
+      font-weight: 700; }
+  .OBDInfo .obd-Content {
+    padding: 10px; }
+    .OBDInfo .obd-Content > ul > li {
+      padding: 5px 0;
+      color: #666;
+      font-size: 14px; }
+      .OBDInfo .obd-Content > ul > li > span:last-child {
+        float: right;
+        margin-right: 5px; }
+    .OBDInfo .obd-Content .obd-group {
+      font-size: 16px;
+      color: #333;
+      font-weight: 700; }
 
 /*轨迹样式*/
 .track-container {
@@ -1565,7 +1766,7 @@ body {
   position: absolute;
   top: 50px;
   left: 25%;
-  height: 32px;
+  height: 39px;
   color: #fff;
   padding-left: 60px;
   font-size: 24px;
@@ -1602,7 +1803,7 @@ body {
       height: 40px;
       padding-left: 5px;
       border: 1px solid #ccc; }
-    #login .group-row .icon {
+    #login .group-row .icon, #login .group-row .mapTools .obd, .mapTools #login .group-row .obd {
       border: 1px solid #ccc;
       border-right: 0;
       float: left;
@@ -2081,5 +2282,69 @@ background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);*/
     background-size: 52px 37px !important;
     background-repeat: no-repeat !important; } }
 /* @end */
+/*表格*/
+.grid {
+  position: relative;
+  background-color: #fff; }
+  .grid .table-head {
+    zoom: 1;
+    padding-right: 23px;
+    color: #333;
+    border-color: #e6e6e6;
+    border-bottom-width: 1px;
+    border-bottom-style: solid; }
+    .grid .table-head .table-head-warp {
+      position: relative;
+      overflow: hidden;
+      zoom: 1;
+      width: 100%;
+      border-width: 0 1px 0 0;
+      border-style: solid;
+      border-color: #e6e6e6; }
+      .grid .table-head .table-head-warp table th {
+        line-height: 40px;
+        overflow: hidden;
+        height: 40px;
+        padding-left: 10px;
+        text-align: left;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        border-width: 0 0 0 1px;
+        border-style: solid;
+        border-color: #e6e6e6; }
+
+.grid-table {
+  width: 100%;
+  margin: 0;
+  table-layout: fixed;
+  empty-cells: show;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-width: 0;
+  outline: 0; }
+
+.grid-content {
+  position: relative;
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%; }
+  .grid-content table > tbody tr > td {
+    position: relative;
+    line-height: 40px;
+    height: 40px;
+    padding-left: 10px;
+    border: 1px solid #e2e3e7; }
+    .grid-content table > tbody tr > td a {
+      color: #4e87f8; }
+    .grid-content table > tbody tr > td .tdFix {
+      position: absolute;
+      top: 0;
+      right: 24px; }
+  .grid-content table > tbody tr:first-child > td {
+    border-top-width: 0; }
+  .grid-content table > tbody tr:hover {
+    background-color: #ebebeb; }
 
 /*# sourceMappingURL=index.css.map */

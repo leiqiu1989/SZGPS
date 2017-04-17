@@ -4,23 +4,99 @@ define(function(require, exports, module) {
     var common = require('common');
 
     var app = {
+        menuData: null,
         setUserName: function() {
             // 显示当前登录名
             $('.ja_userName').text(common.getCookie('username'));
         },
-        changeMenu: function(href) {
-            // 选中当前菜单项
+        getHash: function() {
+            var hash = window.location.hash.replace('#', ''),
+                arr = hash.split('/'),
+                len = arr.length;
+
+            if (hash.indexOf('=') == -1) {
+                return hash;
+            }
+
+            return arr.splice(0, len - 1).join('/');
+        },
+        adjustBox: function() {
+            var expand = $('.js-toggleMenu').data('expand');
+            var calNum = expand ? '220px' : '52px';
+            $('.sidebar-content').css('width', calNum);
+            $('#main-content').css('paddingLeft', calNum);
+            $('.vehicle-box').animate({ 'left': calNum }, 500);
+            if ($('.monitorList').size() > 0) {
+                $('.monitorList').animate({ 'left': calNum }, 500);
+            }
+            var mapLeft = '18%';
+            if (expand) {
+                mapLeft = '25%';
+            }
+            $('.mapTools').css('left', mapLeft);
+        },
+        event: function() {
+            var me = this;
+            // 菜单toggle
+            $(".accordion .link").off().on('click', function() {
+                $this = $(this), $next = $this.next();
+                $next.slideToggle();
+                $this.parent().toggleClass('open');
+                $('.accordion').find('.submenu').not($next).slideUp().parent().removeClass('open');
+            });
+            // 菜单隐藏显示
+            $('.js-toggleMenu').off().on('click', function() {
+                var href = me.getHash();
+                // 菜单是否展开
+                var expand = $(this).data('expand');
+                expand = !!!expand
+                $(this).data('expand', expand);
+                me.initMenu(href, expand);
+                $('#sidebar-menu').toggleClass('sidebar sidebar-min');
+                me.adjustBox();
+            });
+        },
+        // 选中菜单项
+        selectMenu: function(href) {
+            var me = this;
+            var expand = $('.js-toggleMenu').data('expand');
             var currTarget = $('a[href="#' + href + '"');
             if (currTarget.size() > 0) {
-                var li = $(currTarget).parent();
-                var menuLi = $(li).parents('li');
-                $('ul.submenu > li').removeClass('active');
-                $(li).addClass('active');
-                if (!menuLi.hasClass('active')) {
-                    menuLi.siblings().removeClass('active');
-                    menuLi.addClass('active');
+                var $submenu = $(currTarget).closest('ul.submenu');
+                if (!expand) {
+                    var li = $(currTarget).parent();
+                    var menuLi = $(li).parents('li');
+                    $('ul.submenu > li').removeClass('active');
+                    $(li).addClass('active');
+                    if (!menuLi.hasClass('active')) {
+                        menuLi.siblings().removeClass('active');
+                        menuLi.addClass('active');
+                    }
+                } else {
+                    $submenu.show();
+                    $submenu.parent().addClass('open');
+                    $('.accordion .submenu > li > a').removeClass('active');
+                    $(currTarget).addClass('active');
+                    if (href === 'carMonitor/index') {
+                        setTimeout(function() {
+                            me.adjustBox();
+                        }, 100);
+                    }
                 }
             }
+        },
+        // 初始化菜单
+        initMenu: function(href, expand) {
+            var me = this;
+            var data = this.menuData;
+            require.async('./../tpl/menu/index', function(tpl) {
+                $('#sidebar-menu').empty().html(template.compile(tpl)({ data: data, expand: expand }));
+                if (href != 'authorize') {
+                    me.selectMenu(href);
+                }
+                me.setUserName();
+                me.event(href);
+            });
         },
         _init: function() {
             var me = this;
@@ -28,25 +104,20 @@ define(function(require, exports, module) {
                 beforeLoad: function(mod, href) {
                     //登录页和其他页面的切换
                     if (mod !== 'login') {
-                        var username = common.getCookie('username') || '游客';
+                        var username = common.getCookie('username') || '';
                         if (!username) {
                             common.clearData();
                             window.location.hash = '#login/login';
                             return false;
                         }
-                        if ($('#sidebar-mini > ul.nav-list').length < 1) {
+                        if ($('#sidebar-menu > ul').length < 1) {
                             require.async('./../tpl/index/index', function(tpl) {
                                 $('#contentBody').empty().html(template.compile(tpl)());
                                 // 获取用户配置权限，初始化菜单
                                 common.getUserMenu(function(data) {
                                     if (data.length > 0) {
-                                        require.async('./../tpl/menu/index', function(tpl) {
-                                            $('#sidebar-mini').empty().html(template.compile(tpl)({ data: data }));
-                                            if (href != 'authorize') {
-                                                me.changeMenu(href);
-                                            }
-                                            me.setUserName();
-                                        });
+                                        me.menuData = data;
+                                        me.initMenu(href, false);
                                     } else {
                                         window.location.hash = '#authorize/index';
                                         return false;
@@ -55,7 +126,7 @@ define(function(require, exports, module) {
                             });
                         } else {
                             me.setUserName();
-                            me.changeMenu(href);
+                            me.selectMenu(href);
                         }
                         // 清除监控
                         if (mod !== 'carMonitor') {
