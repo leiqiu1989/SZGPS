@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover no-margin">
+<table class="table table-hover no-margin">
     <colgroup>
         <col width="15%" />
         <col width="12%" />

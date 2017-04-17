@@ -29,7 +29,7 @@
             <div class="col-static col-xs-12 no-padding">
                 <div class="panel no-margin flexbox">
                     <div class="panel-heading no-padding datatable-header">
-                        <table class="table table-bordered no-margin">
+                        <table class="table  no-margin">
                             <colgroup>
                                 <col width="50px" />
                                 <col width="20%" />

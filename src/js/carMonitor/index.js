@@ -240,6 +240,19 @@ define(function(require, exports, module) {
                     var id = $(this).data('id');
                     me.carDetailInfo();
                 })
+                .on('click', '.js-search-car', function() {
+                    var plateNo = $.trim($('input[name="txtCarPlateNo"]').val());
+                    var list = $('#carMonitorList').find('tr[plateno*="' + plateNo + '"]');
+                    if (list.size() > 0) {
+                        var defRow = $(list).eq(0);
+                        if ($('.monitorBody').is(':hidden')) {
+                            $('.js-foldToggle').click();
+                        }
+                        $(defRow).addClass('monitor-active').siblings().removeClass('monitor-active');
+                        $('#carMonitorList').scrollTop($(defRow).index() * 41);
+                        $(defRow).click();
+                    }
+                })
                 // 指令
                 .on('click', '.js_directive', function() {
                     var vid = $(this).data('id');

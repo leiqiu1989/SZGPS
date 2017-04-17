@@ -29,6 +29,11 @@ define(function(require, exports, module) {
             if ($('.monitorList').size() > 0) {
                 $('.monitorList').animate({ 'left': calNum }, 500);
             }
+            var mapLeft = '18%';
+            if (expand) {
+                mapLeft = '25%';
+            }
+            $('.mapTools').css('left', mapLeft);
         },
         event: function() {
             var me = this;

@@ -2,7 +2,7 @@
     <div id="monitorMap" class="full"></div>
     <!--车辆列表-->
     <div class="monitorList">
-        <div class="monitorBar clearfix ">
+        <div class="monitorBar clearfix">
             <div class="monitorOrganizationIcon pull-left js-origin "></div>
             <div class="monitorCarSummary pull-left ">
                 <span class="active ">加载车辆<span class="js-carTotal ">0</span></span>
@@ -20,12 +20,12 @@
                     </a>
                 </div>
             </div>-->
-            <div class="pull-right ">
+            <div class="pull-right">
                 <a class="foldUp js-foldToggle "></a>
             </div>
         </div>
-        <div class="monitorBody ">
-            <div class="panel no-margin flexbox ">
+        <div class="monitorBody">
+            <div class="panel no-margin flexbox">
                 <div class="grid ">
                     <div class="table-head ">
                         <div class="table-head-warp ">
@@ -102,10 +102,10 @@
     <div class="mapTools">
         <div class="inputSearch relative">
             <span>车牌号码</span>
-            <input type="text" />
-            <a href="javascript:void(0)"></a>
+            <input type="text" name="txtCarPlateNo" />
+            <a href="javascript:void(0)" class="js-search-car"></a>
         </div>
-        <div class="obd">
+        <div class="obd hidden">
             OBD信息
         </div>
     </div>
