@@ -167,7 +167,7 @@ define(function(require, exports, module) {
             if (!window.monitorTimer) {
                 window.monitorTimer = setInterval(function() {
                     me.getCarPositionList();
-                }, 415000);
+                }, 15000);
             }
         },
         carDetailInfo: function(id) {
