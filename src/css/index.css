@@ -982,7 +982,8 @@ dl dd {
   border-top: 1px solid #363f44;
   background-color: rgba(255, 255, 255, 0.98);
   background-color: #fff \9;
-  font-size: 14px; }
+  font-size: 14px;
+  z-index: 1; }
   .monitorList .monitorBar {
     height: 40px;
     line-height: 40px;
@@ -1189,7 +1190,7 @@ dl dd {
   background: url(./../img/position.png) no-repeat scroll 10px 9px; }
 
 .point_btn {
-  margin-top: 11px;
+  margin-top: 3px;
   line-height: 20px;
   color: #777;
   text-align: center; }
@@ -1263,7 +1264,11 @@ dl dd {
     .OBDInfo .obd-Title > span {
       font-weight: 700; }
   .OBDInfo .obd-Content {
-    padding: 10px; }
+    padding: 10px;
+    height: 620px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-top-width: 0; }
     .OBDInfo .obd-Content > ul > li {
       padding: 5px 0;
       color: #666;

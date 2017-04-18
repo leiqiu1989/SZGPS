@@ -32,6 +32,8 @@ define(function(require, exports, module) {
         sendCode: remoteUrl + '/Command/SendGeneralByVid',
         // 区域查车
         areaQuery: remoteUrl + '/position/QueryVehicleByRectangle',
+        // odb信息
+        odbInfo: remoteUrl + '/obd/last',
         // 车辆管理
         carManager: {
             list: remoteUrl + '/Vehicle/QueryAllVehicleAbbrInfo', //车辆管理列表

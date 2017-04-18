@@ -254,7 +254,7 @@ define(function(require, exports, module) {
             });
             this.trackMarks.push(marker);
         },
-        bindMonitorListEvent: function(data) {
+        bindMonitorListEvent: function(callback) {
             var me = this;
             $('#carMonitorList tbody tr').on('click', function() {
                 var index = $(this).index();
@@ -264,6 +264,7 @@ define(function(require, exports, module) {
                 if (scrollTop) {
                     $("#carMonitorList").scrollTop(scrollTop);
                 }
+                callback && callback($(this).data('vid'));
             });
         },
         // 设置中心点和zoom

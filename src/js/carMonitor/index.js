@@ -13,7 +13,8 @@ define(function(require, exports, module) {
         index: require('../../tpl/carMonitor/index'),
         carList: require('../../tpl/carMonitor/list'),
         carDetail: require('../../tpl/carMonitor/carDetail'),
-        directive: require('../../tpl/carMonitor/directive')
+        directive: require('../../tpl/carMonitor/directive'),
+        odbInfo: require('../../tpl/carMonitor/odb')
     };
 
     function carMonitor() {
@@ -65,13 +66,31 @@ define(function(require, exports, module) {
                 map.addTrackMark(data[i]);
             }
             // 绑定监控表格行单击事件
-            map.bindMonitorListEvent();
+            map.bindMonitorListEvent(this.getOBDInfo);
             // 统计
             me.monitorSummary(data);
             if (data.length > 0 && monitorStart) {
                 // 开启监控
                 me.startMonitorTimer();
             }
+            // 获取OBD信息
+            if (data && data.length > 0) {
+                this.getOBDInfo(data[0].Vid);
+            }
+        },
+        getOBDInfo: function(vid) {
+            common.ajax(api.odbInfo, { vid: vid }, function(res) {
+                if (res && res.status === 'SUCCESS') {
+                    var data = res.content || [];
+                    $('.obd-Content').empty().html(template.compile(tpls.odbInfo)({
+                        data: data
+                    }));
+                    $('#obdList').removeClass('hidden');
+                } else {
+                    var msg = res.errorMsg || '系统出错，请联系管理员！';
+                    common.toast(msg);
+                }
+            });
         },
         initZTree: function() {
             var me = this;
@@ -220,6 +239,14 @@ define(function(require, exports, module) {
                     $('.js-foldToggle').removeClass('foldDown').addClass('foldUp');
                     map.moveOverView('down');
                     $('.monitorBody').hide();
+                })
+                // 切换OBD
+                .on('click', '.js-toggleOBD', function() {
+                    $('#obdList').toggleClass('hidden');
+                })
+                // 隐藏OBD
+                .on('click', '.odb-close', function() {
+                    $('#obdList').addClass('hidden');
                 })
                 // 切换车辆列表
                 .on('click', '.js-foldToggle', function() {
