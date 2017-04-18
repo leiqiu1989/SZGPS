@@ -243,6 +243,9 @@ define(function(require, exports, module) {
             return keyTime < currentTime ? 'red' : '';
         }
     });
+    template.helper('odbNull', function(key) {
+        return key ? key : '0';
+    });
 
     /*公共js*/
     var common = {

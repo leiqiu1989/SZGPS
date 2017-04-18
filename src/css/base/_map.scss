@@ -13,6 +13,7 @@
     background-color: rgba(255, 255, 255, 0.98);
     background-color: #fff \9;
     font-size: 14px;
+    z-index: 1;
     .monitorBar {
         height: 40px;
         line-height: 40px;
@@ -279,7 +280,7 @@
 }
 
 .point_btn {
-    margin-top: 11px;
+    margin-top: 3px;
     line-height: 20px;
     color: #777;
     text-align: center;
@@ -373,6 +374,10 @@
     }
     .obd-Content {
         padding: 10px;
+        height: 620px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-top-width: 0;
         >ul>li {
             padding: 5px 0;
             color: #666;
