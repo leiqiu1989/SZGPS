@@ -986,7 +986,6 @@ dl dd {
   z-index: 1; }
   .monitorList .monitorBar {
     height: 40px;
-    line-height: 40px;
     background: #363f44;
     border-bottom: 1px solid #363f44; }
     .monitorList .monitorBar .monitorOrganizationIcon {
@@ -998,6 +997,8 @@ dl dd {
       cursor: default;
       display: inline-block;
       padding: 0 10px;
+      height: 40px;
+      line-height: 40px;
       border-right: 1px solid #B6C0C9; }
       .monitorList .monitorBar .monitorCarSummary > span.active {
         color: #fff;
@@ -1022,8 +1023,10 @@ dl dd {
       display: inline-block;
       margin-right: 20px;
       cursor: pointer;
-      width: 14px;
-      height: 13px; }
+      width: 16px;
+      height: 10px;
+      position: relative;
+      top: 10px; }
     .monitorList .monitorBar .foldDown {
       background: url("./../img/icon1_more.png") no-repeat center; }
     .monitorList .monitorBar .foldUp {
@@ -1213,7 +1216,6 @@ dl dd {
   .mapTools .icon, .mapTools .obd {
     display: inline-block;
     padding: 10px;
-    width: 120px;
     padding-left: 40px;
     cursor: pointer;
     color: #555;
