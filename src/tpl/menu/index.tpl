@@ -11,13 +11,13 @@ var groupname= subMenus[0].groupname;
             <li>
                 <%if(expand){%>
                     <div class="link">
-                        <i class="menu-icon <%= icon %>"></i>
-                        <%= groupname %>
-                            <i class="fa fa-chevron-down"></i>
+                        <i class="menu-icon-expand <%= icon %>"></i>
+                        <span><%= groupname %></span>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                     <%}else{%>
                         <a href="javascript:" class="dropdown-toggle">
-<i class="menu-icon menu-icon <%= icon %>"></i>
+<i class="menu-icon-collapse <%= icon %>"></i>
 <span class="menu-text"><%= groupname %></span>
 </a>
                         <%}%>
